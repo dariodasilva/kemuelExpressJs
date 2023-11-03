@@ -1,11 +1,27 @@
 const express = require('express');
-
+let alert = require('alert');
 // console.log(express);
 
-const server = express();
+const app = express();
 
-server.get('/kemuel', () =>{
-    console.log('acessou a rota do Kemuel');
-})
+let data = new Date();
 
-server.listen(3030);
+let mensagemDoDia = require('./mensagemDoDia');
+
+app.get('/', (req, res) => {
+    let dia = data.getDate();
+    let mensagemSelecionada = mensagemDoDia.retornarMensagemDoDia(dia);
+
+    res.json({mensagem: mensagemSelecionada});
+});
+
+// server.get('/kemuel', (req, res) =>{
+//     // console.log('acessou a rota do Kemuel');
+//     return res.json({message: 'Aqui estou mais um dia!'});
+// })
+
+
+app.listen(3030, () =>{
+    let data  = new Date();
+    console.log('Servidor iniciado em:', + data);
+});
