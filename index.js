@@ -4,16 +4,23 @@ let alert = require('alert');
 
 const app = express();
 
-let data = new Date();
 
-let mensagemDoDia = require('./mensagemDoDia');
+app.get('/kemuel', (req, res) =>{
+    console.log(req.query);
 
-app.get('/', (req, res) => {
-    let dia = data.getDate();
-    let mensagemSelecionada = mensagemDoDia.retornarMensagemDoDia(dia);
+    res.json({mensagem: 'Parametros recebidos pelo servidor!'});
+})
 
-    res.json({mensagem: mensagemSelecionada});
-});
+// let data = new Date();
+
+// let mensagemDoDia = require('./mensagemDoDia');
+
+// app.get('/opala', (req, res) => {
+//     let dia = data.getDate();
+//     let mensagemSelecionada = mensagemDoDia.retornarMensagemDoDia(dia);
+
+//     res.json({mensagem: mensagemSelecionada});
+// });
 
 // server.get('/kemuel', (req, res) =>{
 //     // console.log('acessou a rota do Kemuel');
